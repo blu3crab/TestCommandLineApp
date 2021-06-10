@@ -8,6 +8,26 @@ Many modifications were made to the article's example as the article is:
 - dated (2015)
 - non-functional (more conceptual with missing pieces, etc.)
 
+terminal command sequence for NDK build & run via adb
+D:\TucDev\TestCommandLineApp\hola>set NDK_PROJECT_PATH=.
+ 
+D:\TucDev\TestCommandLineApp\hola>ndk-build NDK_APPLICATION_MK=./Application.mk
+[arm64-v8a] Compile++      : main.out <= main.cpp
+[arm64-v8a] Executable     : main.out
+[arm64-v8a] Install        : main.out => libs/arm64-v8a/main.out
+ 
+adb push D:\TucDev\TestCommandLineApp\hola\obj\local\arm64-v8a\main.out /data/local/tmp
+ 
+adb shell
+$ cd /data/local/tmp
+$ ls -l
+$ chmod +x main.out
+$ ./main.out
+ 
+flame:/data/local/tmp $ ./main.out
+<<<<hola NDK C++>>>
+
+=========================archive==========================
 D:\TucDev\TestCommandLineApp\hola>ndk-build NDK_APPLICATION_MK=./Application.mk
 [arm64-v8a] Compile++      : main.out <= main.cpp
 [arm64-v8a] Executable     : main.out
